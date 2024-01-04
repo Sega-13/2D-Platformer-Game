@@ -9,7 +9,8 @@ public class PlayerController : MonoBehaviour
     public float jump;
     private Rigidbody2D rb2d;
     private void Awake(){
-        
+        rb2d = gameObject.GetComponent<Rigidbody2D>();
+
     }
     // Update is called once per frame
     void Jump(){
@@ -40,7 +41,10 @@ public class PlayerController : MonoBehaviour
       Vector3 position = transform.position;
       position.x = position.x + horizontal*speed*Time.deltaTime;
       transform.position = position;   
-
+      //move vertically
+      if(vertical > 0){
+          rb2d.AddForce(new Vector2(0f, jump), ForceMode2D.Force);
+      }
       
     }
     private void PlayMovementAnimation(float horizontal, float vertical){

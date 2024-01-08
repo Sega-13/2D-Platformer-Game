@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
         float vertical = Input.GetAxisRaw("jump");
         MoveCharacter(horizontal,vertical);
         PlayMovementAnimation(horizontal,vertical);
-        Jump();
+        //Jump();
         Crouch();  
     }
     private void MoveCharacter(float horizontal,float vertical){
@@ -56,6 +56,11 @@ public class PlayerController : MonoBehaviour
             scale.x = Mathf.Abs(scale.x);
         }
         transform.localScale = scale;
-        
+        //jump
+        if(vertical>0){
+            animator.SetBool("jump",true);
+        }else{
+            animator.SetBool("jump",false);
+        }
     }
 }

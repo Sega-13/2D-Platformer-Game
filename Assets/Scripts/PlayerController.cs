@@ -47,13 +47,18 @@ public class PlayerController : MonoBehaviour
       }
       
     }
+
     private void PlayMovementAnimation(float horizontal, float vertical){
-        animator.SetFloat("speed",Mathf.Abs(speed));
+        
         Vector3 scale = transform.localScale;
         if(horizontal < 0){
+            animator.SetFloat("speed",Mathf.Abs(speed));
             scale.x = -1f * Mathf.Abs(scale.x);
         }else if(horizontal > 0){
+            animator.SetFloat("speed",Mathf.Abs(speed));
             scale.x = Mathf.Abs(scale.x);
+        }else{
+            animator.SetFloat("speed", 0);
         }
         transform.localScale = scale;
         //jump

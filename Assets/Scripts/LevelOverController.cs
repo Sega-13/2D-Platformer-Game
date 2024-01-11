@@ -16,9 +16,7 @@ public class LevelOverController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Trap"))
         {
-            Debug.Log("Trpped");
-            Debug.Log("Trpped");
-            Die();
+             Die();
         }
     }
     private void Die()

@@ -1,15 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public ScoreController scoreController;
     public Animator animator;
     public float speed;
     public float jump;
     private Rigidbody2D rb2d;
     private void Awake(){
         rb2d = gameObject.GetComponent<Rigidbody2D>();
+        /*scoreController = GetComponent<ScoreController>();*/
 
     }
     // Update is called once per frame
@@ -67,5 +70,10 @@ public class PlayerController : MonoBehaviour
         }else{
             animator.SetBool("jump",false);
         }
+    }
+
+    public void PickUpKey()
+    {
+        scoreController.IncreaseScore(10);
     }
 }

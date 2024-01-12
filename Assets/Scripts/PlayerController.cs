@@ -10,9 +10,9 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float jump;
     private Rigidbody2D rb2d;
+    
     private void Awake(){
         rb2d = gameObject.GetComponent<Rigidbody2D>();
-        /*scoreController = GetComponent<ScoreController>();*/
 
     }
     // Update is called once per frame
@@ -76,4 +76,7 @@ public class PlayerController : MonoBehaviour
     {
         scoreController.IncreaseScore(10);
     }
+
+    
+    
 }

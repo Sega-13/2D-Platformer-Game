@@ -19,7 +19,7 @@ public class LevelOverController : MonoBehaviour
              Die();
         }
     }
-    private void Die()
+    public void Die()
     {
         rb.bodyType = RigidbodyType2D.Static;
         anim.SetTrigger("death");

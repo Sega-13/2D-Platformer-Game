@@ -46,5 +46,20 @@ public class EnemyController : MonoBehaviour
         localScale.x *= -1;
         transform.localScale = localScale;
     }
-    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<PlayerController>() != null)
+        {
+            HealthManager.health--;
+            PlayerController playerController = collision.gameObject.GetComponent<PlayerController>();
+            playerController.animator.SetBool("hurt", true);
+            if(HealthManager.health <= 0) 
+            {
+                playerController.animator.SetTrigger("death");
+            }
+        }
+    }
+
+
+
 }

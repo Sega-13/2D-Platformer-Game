@@ -6,23 +6,19 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public ScoreController scoreController;
+    public EnemyController enemyController;
     public Animator animator;
     public float speed;
     public float jump;
     private Rigidbody2D rb2d;
+    private SpriteRenderer sr;
     
     private void Awake(){
         rb2d = gameObject.GetComponent<Rigidbody2D>();
-
+        sr = gameObject.GetComponent<SpriteRenderer>();
     }
     // Update is called once per frame
-    void Jump(){
-        if(Input.GetKeyDown(KeyCode.UpArrow)){
-        animator.SetBool("jump",true);
-        }else if(Input.GetKeyUp(KeyCode.UpArrow)){
-        animator.SetBool("jump",false);
-        }
-    }
+    
     void Crouch(){
         if(Input.GetKeyDown(KeyCode.RightControl)){
             animator.SetBool("crouch",true);
@@ -77,6 +73,10 @@ public class PlayerController : MonoBehaviour
         scoreController.IncreaseScore(10);
     }
 
-    
+    public void OnAnimationDone(String animationName)
+    {
+        animator.SetBool("hurt", false);
+        sr.sprite.name = animationName;
+    }
     
 }

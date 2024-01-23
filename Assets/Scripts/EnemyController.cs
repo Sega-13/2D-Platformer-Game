@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    
     public GameObject pointA;
     public GameObject pointB;
     private Rigidbody2D rb;
@@ -62,10 +63,11 @@ public class EnemyController : MonoBehaviour
             if(HealthManager.health <= 0) 
             {
                 playerController.animator.SetTrigger("death");
+                
             }
         }
     }
-
+    
 
 
 }

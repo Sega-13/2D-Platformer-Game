@@ -9,7 +9,11 @@ public class HealthManager : MonoBehaviour
     public Image[] hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
-    
+
+    private void Start()
+    {
+        health = 3;
+    }
     void Update()
     {
         foreach (Image img in hearts)

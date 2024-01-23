@@ -32,11 +32,12 @@ public class LevelOverController : MonoBehaviour
          }
     }
 
-    private void CompleteLevel(){
+    private void CompleteLevel()
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-    private void RestartLevel()
+   /* private void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
+    }*/
 }

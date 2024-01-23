@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameOverController gameOverController;
     public ScoreController scoreController;
     public EnemyController enemyController;
     public Animator animator;
@@ -12,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public float jump;
     private Rigidbody2D rb2d;
     private SpriteRenderer sr;
-    
+    //public GameOverController gameOverController;
     private void Awake(){
         rb2d = gameObject.GetComponent<Rigidbody2D>();
         sr = gameObject.GetComponent<SpriteRenderer>();
@@ -72,11 +73,22 @@ public class PlayerController : MonoBehaviour
     {
         scoreController.IncreaseScore(10);
     }
-
+    public void PlayerKill()
+    {
+       // gameOverController.PlayerDied();
+        //this.enabled = false;
+    }
     public void OnAnimationDone(String animationName)
     {
         animator.SetBool("hurt", false);
         sr.sprite.name = animationName;
+        /*gameOverController.gameObject.SetActive(true);
+        this.enabled = false;*/
     }
-    
+    public void GameOverScreen()
+    {
+        gameOverController.gameObject.SetActive(true);
+        this.enabled = false;
+    }
+
 }

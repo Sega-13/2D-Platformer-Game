@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Prefab/Lobby.unity
+    guid: 826870b73fd7c3642a8aac4c964fcde5
+  - enabled: 1
     path: Assets/Prefab/Level-1.unity
     guid: a081b4ea50a4834409fa202a6fa737a1
   - enabled: 1

@@ -13,7 +13,7 @@ public class LobbyController : MonoBehaviour
     {
         buttonPlay.onClick.AddListener(PlayGame);
     }
-    private void PlayGame()
+    public void PlayGame()
     {
         LevelSelection.SetActive(true);
         //SceneManager.LoadScene(1);

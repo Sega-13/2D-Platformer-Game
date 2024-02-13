@@ -62,6 +62,7 @@ public class EnemyController : MonoBehaviour
             playerController.animator.SetBool("hurt", true);
             if(HealthManager.health <= 0) 
             {
+                SoundManager.Instance.PlayMusic(Sounds.PlayerDeath);
                 playerController.animator.SetTrigger("death");
                 
             }

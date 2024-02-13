@@ -23,10 +23,12 @@ public class LevelLoader : MonoBehaviour
             case LevelStatus.Locked:
                 Debug.Log("Can't Play this level till you unlock it");
                 break;
-            case LevelStatus.UnLocked: 
+            case LevelStatus.UnLocked:
+                SoundManager.Instance.Play(Sounds.ButtonClick);
                SceneManager.LoadScene(levelName);
                 break;
             case LevelStatus.Completed:
+                SoundManager.Instance.Play(Sounds.ButtonClick);
                 SceneManager.LoadScene(levelName);
                 break;
 

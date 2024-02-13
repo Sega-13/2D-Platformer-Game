@@ -48,13 +48,16 @@ public class PlayerController : MonoBehaviour
       
     }
 
-    private void PlayMovementAnimation(float horizontal, float vertical){
+    private void PlayMovementAnimation(float horizontal, float vertical)
+    {
         
         Vector3 scale = transform.localScale;
         if(horizontal < 0){
+            SoundManager.Instance.Play(Sounds.PlayerMove);
             animator.SetFloat("speed",Mathf.Abs(speed));
             scale.x = -1f * Mathf.Abs(scale.x);
         }else if(horizontal > 0){
+            SoundManager.Instance.Play(Sounds.PlayerMove);
             animator.SetFloat("speed",Mathf.Abs(speed));
             scale.x = Mathf.Abs(scale.x);
         }else{

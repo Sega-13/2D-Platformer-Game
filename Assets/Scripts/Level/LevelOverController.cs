@@ -25,6 +25,7 @@ public class LevelOverController : MonoBehaviour
     public void Die()
     {
         rb.bodyType = RigidbodyType2D.Static;
+        SoundManager.Instance.PlayMusic(Sounds.PlayerDeath);
         anim.SetTrigger("death");
     } 
     public void OnTriggerEnter2D(Collider2D collision)

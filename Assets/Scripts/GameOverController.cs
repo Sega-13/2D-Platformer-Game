@@ -18,6 +18,7 @@ public class GameOverController : MonoBehaviour
     }*/
     private void ReloadLevel()
     {
+        SoundManager.Instance.Play(Sounds.LevelStart);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
   

@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class KeyController : MonoBehaviour
 {
+    public ParticalController particalController;
+    private void Awake()
+    {
+        particalController.PlayParticleEffect();
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.GetComponent<PlayerController>() != null)

@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
     public float jump;
     private Rigidbody2D rb2d;
     private SpriteRenderer sr;
+    public ParticalController particleController;
+
+
     //public GameOverController gameOverController;
     private void Awake(){
         rb2d = gameObject.GetComponent<Rigidbody2D>();
@@ -90,6 +93,8 @@ public class PlayerController : MonoBehaviour
     }
     public void GameOverScreen()
     {
+        SoundManager.Instance.Play(Sounds.LevelOver);
+        particleController.PlayParticleEffect();
         gameOverController.gameObject.SetActive(true);
         this.enabled = false;
     }

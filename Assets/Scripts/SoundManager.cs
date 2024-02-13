@@ -91,4 +91,8 @@ public enum Sounds
     PlayerMove,
     PlayerDeath,
     EnemyDeath,
+    LevelStart,
+    LevelFinish,
+    LevelOver,
+    
 }

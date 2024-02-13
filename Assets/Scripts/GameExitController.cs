@@ -26,10 +26,12 @@ public class GameExitController : MonoBehaviour
     }
     public void ReloadLevel()
     {
+        SoundManager.Instance.Play(Sounds.LevelStart);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public void NextLevel()
     {
+        SoundManager.Instance.Play(Sounds.LevelStart);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

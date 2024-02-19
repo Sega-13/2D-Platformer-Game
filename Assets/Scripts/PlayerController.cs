@@ -7,19 +7,28 @@ public class PlayerController : MonoBehaviour
 {
     public GameOverController gameOverController;
     public ScoreController scoreController;
-    public EnemyController enemyController;
+    //public EnemyController enemyController;
     public Animator animator;
     public float speed;
     public float jump;
     private Rigidbody2D rb2d;
+    private BoxCollider2D bx2d;
     private SpriteRenderer sr;
     public ParticalController particleController;
+    [SerializeField] private LayerMask jumpableGround;
+    private bool doubleJump;
+    private float doubleJumpForce = 16f;
+   // private bool isGrounded;
+   
+   
+    
 
 
     //public GameOverController gameOverController;
     private void Awake(){
         rb2d = gameObject.GetComponent<Rigidbody2D>();
         sr = gameObject.GetComponent<SpriteRenderer>();
+        bx2d = gameObject.GetComponent<BoxCollider2D>();
     }
     // Update is called once per frame
     
@@ -30,25 +39,43 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("crouch", false);
         }
     }
+    
     void Update()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("jump");
         MoveCharacter(horizontal,vertical);
         PlayMovementAnimation(horizontal,vertical);
-        //Jump();
-        Crouch();  
+        Crouch();
+       
     }
     private void MoveCharacter(float horizontal,float vertical){
       //move character horizontally
       Vector3 position = transform.position;
       position.x = position.x + horizontal*speed*Time.deltaTime;
-      transform.position = position;   
-      //move vertically
-      if(vertical > 0){
-          rb2d.AddForce(new Vector2(0f, jump), ForceMode2D.Force);
-      }
-      
+      transform.position = position;
+        //move vertically
+        /*if (vertical > 0)
+        {
+            rb2d.velocity = Vector2.up * jump;
+           
+        }*/
+
+        if(IsGrounded() && !(Input.GetButtonDown("jump")))
+        {
+            doubleJump = false;
+        }
+
+        if (Input.GetButtonDown("jump"))
+        {
+            if (IsGrounded() || doubleJump)
+            {
+                rb2d.velocity = new Vector2(rb2d.velocity.x, doubleJump ? doubleJumpForce : jump);
+                doubleJump = !doubleJump;
+            }
+
+        }
+
     }
 
     private void PlayMovementAnimation(float horizontal, float vertical)
@@ -68,10 +95,13 @@ public class PlayerController : MonoBehaviour
         }
         transform.localScale = scale;
         //jump
-        if(vertical>0){
-            animator.SetBool("jump",true);
-        }else{
-            animator.SetBool("jump",false);
+        if (vertical > 0)
+        {
+            animator.SetBool("jump", true);
+        }
+        else
+        {
+            animator.SetBool("jump", false);
         }
     }
 
@@ -97,6 +127,10 @@ public class PlayerController : MonoBehaviour
         particleController.PlayParticleEffect();
         gameOverController.gameObject.SetActive(true);
         this.enabled = false;
+    }
+    private bool IsGrounded()
+    {
+        return Physics2D.BoxCast(bx2d.bounds.center, bx2d.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
     }
 
 }

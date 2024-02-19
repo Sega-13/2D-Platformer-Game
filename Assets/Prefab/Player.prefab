@@ -97,8 +97,8 @@ GameObject:
   - component: {fileID: 1393239145}
   - component: {fileID: 1393239144}
   - component: {fileID: 1393239146}
-  - component: {fileID: 6043383329880901055}
   - component: {fileID: 3148594535847475112}
+  - component: {fileID: 8250145476923863680}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -281,23 +281,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverController: {fileID: 0}
   scoreController: {fileID: 0}
-  enemyController: {fileID: 0}
   animator: {fileID: 1066435179418836982}
   speed: 4
   jump: 20
---- !u!114 &6043383329880901055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8131273196729490464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c7cbc4400cb44645897aeeac562c789, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  exitController: {fileID: 0}
+  particleController: {fileID: 0}
+  jumpableGround:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!114 &3148594535847475112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,3 +306,16 @@ MonoBehaviour:
   - {fileID: 0}
   fullHeart: {fileID: 21300010, guid: fc49794cc535bef4f969645c4eb97b80, type: 3}
   emptyHeart: {fileID: 21300000, guid: fc49794cc535bef4f969645c4eb97b80, type: 3}
+--- !u!114 &8250145476923863680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8131273196729490464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c7cbc4400cb44645897aeeac562c789, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exitController: {fileID: 0}

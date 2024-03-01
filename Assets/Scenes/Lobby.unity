@@ -339,7 +339,6 @@ GameObject:
   - component: {fileID: 216665636}
   - component: {fileID: 216665635}
   - component: {fileID: 216665634}
-  - component: {fileID: 216665638}
   - component: {fileID: 216665640}
   - component: {fileID: 216665639}
   m_Layer: 5
@@ -436,20 +435,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &216665638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 216665633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9ba9e4599773554080644e6775e321c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonPlay: {fileID: 0}
-  LevelSelection: {fileID: 1728001741}
 --- !u!114 &216665639
 MonoBehaviour:
   m_ObjectHideFlags: 0

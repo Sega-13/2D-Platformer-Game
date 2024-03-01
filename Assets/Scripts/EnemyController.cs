@@ -11,6 +11,8 @@ public class EnemyController : MonoBehaviour
     private Animator anim;
     private Transform currentPoint;
     public float speed;
+    private static bool isPlayerDead = false;
+    Vector2 point;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -21,10 +23,16 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        Vector2 point = currentPoint.position - transform.position;
+        EnemyTraverse();
+       
+        
+    }
+    private void EnemyTraverse()
+    {
+        point = currentPoint.position - transform.position;
 
 
-        if (currentPoint == pointB.transform)
+        if (currentPoint.position.Equals(pointB.transform.position))
         {
             rb.velocity = new Vector2(speed, 0);
         }
@@ -32,18 +40,16 @@ public class EnemyController : MonoBehaviour
         {
             rb.velocity = new Vector2(-speed, 0);
         }
-        if (Vector2.Distance(transform.position, currentPoint.position) < 0.1f && currentPoint == pointB.transform)
+        if (Vector2.Distance(transform.position, currentPoint.transform.position) < 0.1f && currentPoint.position.Equals(pointB.transform.position))
         {
             Flip();
             currentPoint = pointA.transform;
         }
-        if (Vector2.Distance(transform.position, currentPoint.position) < 0.1f && currentPoint == pointA.transform)
+        if (Vector2.Distance(transform.position, currentPoint.position) < 0.1f && currentPoint.position.Equals(pointA.transform.position))
         {
             Flip();
             currentPoint = pointB.transform;
         }
-       
-        
     }
     private void Flip()
     {
@@ -57,11 +63,12 @@ public class EnemyController : MonoBehaviour
         {
             HealthManager.health--;
             PlayerController playerController = collision.gameObject.GetComponent<PlayerController>();
-            playerController.animator.SetBool("hurt", true);
-            if(HealthManager.health <= 0) 
+            playerController.playerAnimator.SetBool("hurt", true);
+            if(HealthManager.health <= 0 && !isPlayerDead) 
             {
+                isPlayerDead = true;
                 SoundManager.Instance.PlayMusic(Sounds.PlayerDeath);
-                playerController.animator.SetTrigger("death");
+                playerController.playerAnimator.SetTrigger("death");
                 
             }
         }

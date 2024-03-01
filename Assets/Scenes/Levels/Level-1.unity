@@ -676,6 +676,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 998571303}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &463340721 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1066435179418836982, guid: e163ca22c68669f42a277e341f6e9c4e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5660382165245945380}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &540384720
 GameObject:
   m_ObjectHideFlags: 0
@@ -826,18 +832,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6511183320073034120}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &613535413 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4152241670125871991, guid: 0ba99c25a9ecfd14f8da0fdc43d1ffae,
-    type: 3}
-  m_PrefabInstance: {fileID: 6511183320073034120}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d27fb70c9bfc5d4da57603676434be6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &738090916
 GameObject:
   m_ObjectHideFlags: 0
@@ -852,7 +846,7 @@ GameObject:
   - component: {fileID: 738090920}
   m_Layer: 10
   m_Name: GroundTileMap
-  m_TagString: Untagged
+  m_TagString: platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1440,13 +1434,23 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: 6, y: 8, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 2
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
   - m_RefCount: 22
     m_Data: {fileID: 11400000, guid: 1d3194b7bc3991143bd9ed97b4041ba1, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 5a06cefacab7382489db9ef8808cd3fd, type: 2}
-  - m_RefCount: 5
+  - m_RefCount: 6
     m_Data: {fileID: 11400000, guid: 5bdacd32d0fc8c845b53099b099b4c10, type: 2}
   - m_RefCount: 6
     m_Data: {fileID: 11400000, guid: 842009e6c1c056e48b0b8133fad06e04, type: 2}
@@ -1457,7 +1461,7 @@ Tilemap:
   m_TileSpriteArray:
   - m_RefCount: 22
     m_Data: {fileID: 21300000, guid: 6aa3a976ac9ecc54aad638ffbf4e67c6, type: 3}
-  - m_RefCount: 5
+  - m_RefCount: 6
     m_Data: {fileID: 21300000, guid: e49210b2eba9a5442b6fe40c91776cd2, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -1468,7 +1472,7 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 804743266b3b62d428e86255220b6694, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 51
+  - m_RefCount: 52
     m_Data:
       e00: 1
       e01: 0
@@ -1487,7 +1491,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 51
+  - m_RefCount: 52
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -2437,19 +2441,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2366070508872502134}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1672717172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1672717171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d124f65ccef00ba43b9bb780e657f5d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particalController: {fileID: 613535413}
 --- !u!95 &1672717176
 Animator:
   serializedVersion: 5
@@ -2836,6 +2827,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3454748072164489678, guid: 613847f230f9e1043a75396d9fda8a8a,
+        type: 3}
+      propertyPath: particalController
+      value: 
+      objectReference: {fileID: 1827858003}
     - target: {fileID: 3856140341773691592, guid: 613847f230f9e1043a75396d9fda8a8a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2892,17 +2888,15 @@ PrefabInstance:
       value: Key
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1999962087059260230, guid: 613847f230f9e1043a75396d9fda8a8a, type: 3}
+    - {fileID: 889035468078199049, guid: 613847f230f9e1043a75396d9fda8a8a, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3856140341773691592, guid: 613847f230f9e1043a75396d9fda8a8a,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 613535412}
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4570641898877588897, guid: 613847f230f9e1043a75396d9fda8a8a,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1672717172}
     - targetCorrespondingSourceObject: {fileID: 4570641898877588897, guid: 613847f230f9e1043a75396d9fda8a8a,
         type: 3}
       insertIndex: -1
@@ -3005,7 +2999,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1393239146, guid: e163ca22c68669f42a277e341f6e9c4e, type: 3}
       propertyPath: jump
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1393239146, guid: e163ca22c68669f42a277e341f6e9c4e, type: 3}
       propertyPath: GroundCheck
@@ -3019,6 +3013,10 @@ PrefabInstance:
       propertyPath: extraJumpValue
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1393239146, guid: e163ca22c68669f42a277e341f6e9c4e, type: 3}
+      propertyPath: playerAnimator
+      value: 
+      objectReference: {fileID: 463340721}
     - target: {fileID: 1393239146, guid: e163ca22c68669f42a277e341f6e9c4e, type: 3}
       propertyPath: scoreController
       value: 
@@ -3132,6 +3130,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2366070508872502135}
     m_Modifications:
+    - target: {fileID: 447983196158498727, guid: 0ba99c25a9ecfd14f8da0fdc43d1ffae,
+        type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 912680429711678599, guid: 0ba99c25a9ecfd14f8da0fdc43d1ffae,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3182,6 +3185,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4152241670125871991, guid: 0ba99c25a9ecfd14f8da0fdc43d1ffae,
+        type: 3}
+      propertyPath: particleSystem
+      value: 
+      objectReference: {fileID: 8266853595530351970}
     - target: {fileID: 8368396118857041849, guid: 0ba99c25a9ecfd14f8da0fdc43d1ffae,
         type: 3}
       propertyPath: m_Name
@@ -3208,7 +3216,7 @@ PrefabInstance:
     - target: {fileID: 4457322464372235764, guid: 228a5cece220ddd4f90d13093522220b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.67
+      value: -1.36
       objectReference: {fileID: 0}
     - target: {fileID: 4457322464372235764, guid: 228a5cece220ddd4f90d13093522220b,
         type: 3}
@@ -3361,6 +3369,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1290badeef9a0b14e9e324970a7ee775, type: 3}
+--- !u!198 &8266853595530351970 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4498948277418312561, guid: 1290badeef9a0b14e9e324970a7ee775,
+    type: 3}
+  m_PrefabInstance: {fileID: 8266853595530351969}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

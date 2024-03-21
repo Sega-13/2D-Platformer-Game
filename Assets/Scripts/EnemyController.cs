@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    
+
     public GameObject pointA;
     public GameObject pointB;
     private Rigidbody2D rb;
@@ -18,14 +18,12 @@ public class EnemyController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         currentPoint = pointB.transform;
-        anim.SetBool("isRunning", true);
+
     }
 
     private void Update()
     {
         EnemyTraverse();
-       
-        
     }
     private void EnemyTraverse()
     {
@@ -40,12 +38,12 @@ public class EnemyController : MonoBehaviour
         {
             rb.velocity = new Vector2(-speed, 0);
         }
-        if (Vector2.Distance(transform.position, currentPoint.transform.position) < 0.1f && currentPoint.position.Equals(pointB.transform.position))
+        if (Vector2.Distance(transform.position, currentPoint.transform.position) < 0.7f && currentPoint.position.Equals(pointB.transform.position))
         {
             Flip();
             currentPoint = pointA.transform;
         }
-        if (Vector2.Distance(transform.position, currentPoint.position) < 0.1f && currentPoint.position.Equals(pointA.transform.position))
+        if (Vector2.Distance(transform.position, currentPoint.position) < 0.7f && currentPoint.position.Equals(pointA.transform.position))
         {
             Flip();
             currentPoint = pointB.transform;
@@ -64,16 +62,16 @@ public class EnemyController : MonoBehaviour
             HealthManager.health--;
             PlayerController playerController = collision.gameObject.GetComponent<PlayerController>();
             playerController.playerAnimator.SetBool("hurt", true);
-            if(HealthManager.health <= 0 && !isPlayerDead) 
+            if (HealthManager.health <= 0 && !isPlayerDead)
             {
                 isPlayerDead = true;
                 SoundManager.Instance.PlayMusic(Sounds.PlayerDeath);
                 playerController.playerAnimator.SetTrigger("death");
-                
+
             }
         }
     }
-    
+
 
 
 }

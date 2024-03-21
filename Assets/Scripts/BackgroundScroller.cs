@@ -12,7 +12,6 @@ public class BackgroundScroller : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("@#$#@$$@#@$@");
         mat = GetComponent<Renderer>().material;
         
     }

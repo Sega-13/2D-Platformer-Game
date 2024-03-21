@@ -10,7 +10,6 @@ public class LevelOverController : MonoBehaviour
     public GameExitController exitController;
     private void Start()
     {
-       // gameOverController = GetComponent<GameOverController>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         
@@ -42,11 +41,6 @@ public class LevelOverController : MonoBehaviour
         LevelManager.Instance.MarkCurrentLevelComplete();
         exitController.gameObject.SetActive(true);
 
-       // playerController.GameOverScreen();
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-   /* private void RestartLevel()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }*/
+   
 }

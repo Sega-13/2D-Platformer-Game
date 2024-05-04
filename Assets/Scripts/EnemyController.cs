@@ -11,7 +11,6 @@ public class EnemyController : MonoBehaviour
     private Animator anim;
     private Transform currentPoint;
     public float speed;
-    private static bool isPlayerDead = false;
     Vector2 point;
     private void Start()
     {
@@ -62,9 +61,8 @@ public class EnemyController : MonoBehaviour
             HealthManager.health--;
             PlayerController playerController = collision.gameObject.GetComponent<PlayerController>();
             playerController.playerAnimator.SetBool("hurt", true);
-            if (HealthManager.health <= 0 && !isPlayerDead)
+            if (HealthManager.health <= 0)
             {
-                isPlayerDead = true;
                 SoundManager.Instance.PlayMusic(Sounds.PlayerDeath);
                 playerController.playerAnimator.SetTrigger("death");
 

@@ -147,6 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 0}
   pointB: {fileID: 0}
+  enemyRigidBody: {fileID: 8050523323262855305}
   speed: 2
 --- !u!95 &6713707247568031535
 Animator:
@@ -158,7 +159,7 @@ Animator:
   m_GameObject: {fileID: 938758359909477935}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 86ebe0f08d8bf3a4b82a61ac44a9421a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 717c1eef16344f04ea2d3892fe246d9e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

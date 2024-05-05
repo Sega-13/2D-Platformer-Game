@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class LevelLoader : MonoBehaviour
 {
     private Button button;
-    public string levelName;
+    [SerializeField]private string levelName;
 
     private void Awake()
     {

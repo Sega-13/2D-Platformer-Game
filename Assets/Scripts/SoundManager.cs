@@ -7,11 +7,11 @@ public class SoundManager : MonoBehaviour
 {
     private static SoundManager instance;
     public static SoundManager Instance { get { return instance; } }
-    public SoundType[] SoundList;
-    public AudioSource soundEffect;
-    public AudioSource soundMusic;
-    public bool isMute = false;
-    public float volume = 1f;
+    [SerializeField] private SoundType[] SoundList;
+    [SerializeField] private AudioSource soundEffect;
+    [SerializeField] private AudioSource soundMusic;
+    private bool isMute = false;
+    private float volume = 1f;
     private void Awake()
     {
         if (instance == null)

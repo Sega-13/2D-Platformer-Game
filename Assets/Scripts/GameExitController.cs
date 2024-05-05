@@ -32,6 +32,7 @@ public class GameExitController : MonoBehaviour
     public void NextLevel()
     {
         SoundManager.Instance.Play(Sounds.LevelStart);
+        HealthManager.health = 3;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

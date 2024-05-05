@@ -5,42 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class LevelOverController : MonoBehaviour
 {
-    private Animator anim;
-    private Rigidbody2D rb;
-    public GameExitController exitController;
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-        
-    }
+    [SerializeField]private Animator playerAnimator;
+    [SerializeField]private Rigidbody2D playerRigidBody;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Trap"))
+        if (collision.gameObject.GetComponent<PlayerController>()!= null)
         {
-             Die();
+            Die();
         }
     }
     public void Die()
     {
-        rb.bodyType = RigidbodyType2D.Static;
+        playerRigidBody.bodyType = RigidbodyType2D.Static;
         SoundManager.Instance.PlayMusic(Sounds.PlayerDeath);
-        anim.SetTrigger("death");
-    } 
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-         if(collision.gameObject.GetComponent<PlayerController>() !=null)
-         {
-            SoundManager.Instance.Play(Sounds.LevelFinish);
-              CompleteLevel();
-         }
+        playerAnimator.SetTrigger("death");
     }
-
-    private void CompleteLevel()
-    {
-        LevelManager.Instance.MarkCurrentLevelComplete();
-        exitController.gameObject.SetActive(true);
-
-    }
-   
 }

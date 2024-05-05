@@ -496,6 +496,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 427201663}
   pointB: {fileID: 1199802227}
+  enemyRigidBody: {fileID: 322532255}
   speed: 2
 --- !u!1 &362564472
 GameObject:
@@ -1031,6 +1032,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 1273431894}
   pointB: {fileID: 1309694270}
+  enemyRigidBody: {fileID: 560848542}
   speed: 2
 --- !u!95 &560848541
 Animator:
@@ -2098,6 +2100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1378579426}
   - component: {fileID: 1378579425}
+  - component: {fileID: 1378579427}
   m_Layer: 0
   m_Name: LevelOver
   m_TagString: Trap
@@ -2165,6 +2168,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 259470097}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1378579427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378579424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c7cbc4400cb44645897aeeac562c789, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAnimator: {fileID: 463340721}
+  playerRigidBody: {fileID: 2049981577}
 --- !u!4 &1408236701 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 912680429711678599, guid: 0ba99c25a9ecfd14f8da0fdc43d1ffae,
@@ -2715,7 +2732,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1938639967}
   - component: {fileID: 1938639966}
-  - component: {fileID: 1938639968}
+  - component: {fileID: 1938639969}
   m_Layer: 0
   m_Name: LevelComplete
   m_TagString: Untagged
@@ -2783,7 +2800,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 259470097}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1938639968
+--- !u!114 &1938639969
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2792,7 +2809,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1938639965}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c7cbc4400cb44645897aeeac562c789, type: 3}
+  m_Script: {fileID: 11500000, guid: 1c6763bf6defdbb45a1bbbd5e870d776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   exitController: {fileID: 1372006523}
@@ -2941,6 +2958,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5660382165245945380}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &2049981575 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4568395188087828136, guid: e163ca22c68669f42a277e341f6e9c4e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5660382165245945380}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &2049981576 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 1393239144, guid: e163ca22c68669f42a277e341f6e9c4e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5660382165245945380}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &2049981577 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 1393239145, guid: e163ca22c68669f42a277e341f6e9c4e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5660382165245945380}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2049981578 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3148594535847475112, guid: e163ca22c68669f42a277e341f6e9c4e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5660382165245945380}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a03e613d1f525bf4c8f9c5a49c506734, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2135420609
 GameObject:
   m_ObjectHideFlags: 0
@@ -3242,6 +3289,10 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1393239146, guid: e163ca22c68669f42a277e341f6e9c4e, type: 3}
+      propertyPath: rb2d
+      value: 
+      objectReference: {fileID: 2049981577}
+    - target: {fileID: 1393239146, guid: e163ca22c68669f42a277e341f6e9c4e, type: 3}
       propertyPath: speed
       value: 6
       objectReference: {fileID: 0}
@@ -3254,6 +3305,10 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1393239146, guid: e163ca22c68669f42a277e341f6e9c4e, type: 3}
+      propertyPath: healthManager
+      value: 
+      objectReference: {fileID: 2049981578}
+    - target: {fileID: 1393239146, guid: e163ca22c68669f42a277e341f6e9c4e, type: 3}
       propertyPath: extraJumpValue
       value: 2
       objectReference: {fileID: 0}
@@ -3261,6 +3316,10 @@ PrefabInstance:
       propertyPath: playerAnimator
       value: 
       objectReference: {fileID: 463340721}
+    - target: {fileID: 1393239146, guid: e163ca22c68669f42a277e341f6e9c4e, type: 3}
+      propertyPath: playerRigidBody
+      value: 
+      objectReference: {fileID: 2049981577}
     - target: {fileID: 1393239146, guid: e163ca22c68669f42a277e341f6e9c4e, type: 3}
       propertyPath: scoreController
       value: 
@@ -3270,6 +3329,10 @@ PrefabInstance:
       value: 1024
       objectReference: {fileID: 0}
     - target: {fileID: 1393239146, guid: e163ca22c68669f42a277e341f6e9c4e, type: 3}
+      propertyPath: playerBoxCollider
+      value: 
+      objectReference: {fileID: 2049981576}
+    - target: {fileID: 1393239146, guid: e163ca22c68669f42a277e341f6e9c4e, type: 3}
       propertyPath: gameOverController
       value: 
       objectReference: {fileID: 391531505}
@@ -3277,6 +3340,10 @@ PrefabInstance:
       propertyPath: particleController
       value: 
       objectReference: {fileID: 1827858003}
+    - target: {fileID: 1393239146, guid: e163ca22c68669f42a277e341f6e9c4e, type: 3}
+      propertyPath: playerSpriteRenderer
+      value: 
+      objectReference: {fileID: 2049981575}
     - target: {fileID: 1393239146, guid: e163ca22c68669f42a277e341f6e9c4e, type: 3}
       propertyPath: jumpableGround.m_Bits
       value: 1024

@@ -875,6 +875,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 62797290}
   pointB: {fileID: 1492137760}
+  enemyRigidBody: {fileID: 165215484}
   speed: 2
 --- !u!70 &165215489
 CapsuleCollider2D:
@@ -1141,6 +1142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 760944423}
   pointB: {fileID: 1106468040}
+  enemyRigidBody: {fileID: 167291223}
   speed: 2
 --- !u!70 &167291228
 CapsuleCollider2D:
@@ -1550,6 +1552,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 77509999}
   pointB: {fileID: 1812041244}
+  enemyRigidBody: {fileID: 322532255}
   speed: 2
 --- !u!1 &344633926
 GameObject:
@@ -2172,6 +2175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 818462445}
   pointB: {fileID: 1893811516}
+  enemyRigidBody: {fileID: 560848542}
   speed: 2
 --- !u!95 &560848541
 Animator:
@@ -2507,6 +2511,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 535207178}
   pointB: {fileID: 436119366}
+  enemyRigidBody: {fileID: 633944062}
   speed: 2
 --- !u!70 &633944067
 CapsuleCollider2D:
@@ -3051,6 +3056,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 644971337}
   pointB: {fileID: 358815854}
+  enemyRigidBody: {fileID: 731268882}
   speed: 2
 --- !u!70 &731268887
 CapsuleCollider2D:
@@ -7178,6 +7184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 460819318}
   pointB: {fileID: 1689154535}
+  enemyRigidBody: {fileID: 1116578778}
   speed: 2
 --- !u!70 &1116578783
 CapsuleCollider2D:
@@ -7322,6 +7329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 850148810}
   pointB: {fileID: 442655752}
+  enemyRigidBody: {fileID: 1155747910}
   speed: 2
 --- !u!70 &1155747915
 CapsuleCollider2D:
@@ -7704,6 +7712,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1378579426}
   - component: {fileID: 1378579425}
+  - component: {fileID: 1378579427}
   m_Layer: 0
   m_Name: LevelOver
   m_TagString: Trap
@@ -7771,6 +7780,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 259470097}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1378579427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378579424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c7cbc4400cb44645897aeeac562c789, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAnimator: {fileID: 5660382165245945381}
+  playerRigidBody: {fileID: 5660382165245945382}
 --- !u!1 &1432390736
 GameObject:
   m_ObjectHideFlags: 0
@@ -8736,6 +8759,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 1899376154}
   pointB: {fileID: 35690436}
+  enemyRigidBody: {fileID: 1645747854}
   speed: 2
 --- !u!70 &1645747859
 CapsuleCollider2D:
@@ -9387,8 +9411,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1938639967}
   - component: {fileID: 1938639966}
-  - component: {fileID: 1938639968}
   - component: {fileID: 1938639969}
+  - component: {fileID: 1938639970}
   m_Layer: 0
   m_Name: LevelComplete
   m_TagString: Untagged
@@ -9460,19 +9484,6 @@ RectTransform:
   m_AnchoredPosition: {x: -11.44, y: 33.08}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1938639968
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1938639965}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c7cbc4400cb44645897aeeac562c789, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  exitController: {fileID: 1490287148}
 --- !u!222 &1938639969
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9481,6 +9492,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1938639965}
   m_CullTransparentMesh: 1
+--- !u!114 &1938639970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938639965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c6763bf6defdbb45a1bbbd5e870d776, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exitController: {fileID: 1490287148}
 --- !u!1 &1982462101
 GameObject:
   m_ObjectHideFlags: 0
@@ -10057,6 +10081,12 @@ PrefabInstance:
 --- !u!95 &5660382165245945381 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 1066435179418836982, guid: e163ca22c68669f42a277e341f6e9c4e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5660382165245945380}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &5660382165245945382 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 1393239145, guid: e163ca22c68669f42a277e341f6e9c4e,
     type: 3}
   m_PrefabInstance: {fileID: 5660382165245945380}
   m_PrefabAsset: {fileID: 0}

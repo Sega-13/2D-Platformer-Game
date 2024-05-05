@@ -1,21 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
-
-    public GameObject pointA;
-    public GameObject pointB;
-    private Rigidbody2D rb;
-    private Animator anim;
+    
+    [SerializeField]private GameObject pointA;
+    [SerializeField]private GameObject pointB;
+    [SerializeField]private Rigidbody2D enemyRigidBody;
+    [SerializeField]private float speed;
     private Transform currentPoint;
-    public float speed;
+    private float currentPos,posA,posB;
+    
+   
     Vector2 point;
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
         currentPoint = pointB.transform;
 
     }
@@ -26,23 +27,24 @@ public class EnemyController : MonoBehaviour
     }
     private void EnemyTraverse()
     {
-        point = currentPoint.position - transform.position;
 
-
-        if (currentPoint.position.Equals(pointB.transform.position))
+        currentPos = currentPoint.position.x;
+        posA = pointA.transform.position.x;
+        posB = pointB.transform.position.x;
+        if (currentPos.Equals(posB))
         {
-            rb.velocity = new Vector2(speed, 0);
+            enemyRigidBody.velocity = new Vector2(speed, 0);
         }
         else
         {
-            rb.velocity = new Vector2(-speed, 0);
+            enemyRigidBody.velocity = new Vector2(-speed, 0);
         }
-        if (Vector2.Distance(transform.position, currentPoint.transform.position) < 0.7f && currentPoint.position.Equals(pointB.transform.position))
+        if (Vector2.Distance(transform.position, currentPoint.transform.position) < 0.7f && currentPos.Equals(posB))
         {
             Flip();
             currentPoint = pointA.transform;
         }
-        if (Vector2.Distance(transform.position, currentPoint.position) < 0.7f && currentPoint.position.Equals(pointA.transform.position))
+        if (Vector2.Distance(transform.position, currentPoint.position) < 0.7f && currentPos.Equals(posA))
         {
             Flip();
             currentPoint = pointB.transform;
@@ -60,11 +62,11 @@ public class EnemyController : MonoBehaviour
         {
             HealthManager.health--;
             PlayerController playerController = collision.gameObject.GetComponent<PlayerController>();
-            playerController.playerAnimator.SetBool("hurt", true);
+            playerController.GetPlayerAnimator().SetBool("hurt", true);
             if (HealthManager.health <= 0)
             {
                 SoundManager.Instance.PlayMusic(Sounds.PlayerDeath);
-                playerController.playerAnimator.SetTrigger("death");
+                playerController.GetPlayerAnimator().SetTrigger("death");
 
             }
         }

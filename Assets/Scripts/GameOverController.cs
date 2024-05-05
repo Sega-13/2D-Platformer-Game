@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class GameOverController : MonoBehaviour
 {
-    public Button buttonRestart;
+    [SerializeField] private Button buttonRestart;
 
     private void Awake()
     {
@@ -16,6 +16,7 @@ public class GameOverController : MonoBehaviour
     private void ReloadLevel()
     {
         SoundManager.Instance.Play(Sounds.LevelStart);
+        HealthManager.health = 3;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
   

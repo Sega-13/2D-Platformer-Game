@@ -2,30 +2,42 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private GameOverController gameOverController;
     [SerializeField] private ScoreController scoreController;
-    public Animator playerAnimator;
+    [SerializeField] private Animator playerAnimator;
     [SerializeField] private float speed;
     [SerializeField] private float jump;
-    private Rigidbody2D rb2d;
-    private BoxCollider2D bx2d;
-    private SpriteRenderer sr;
+    [SerializeField] private Rigidbody2D playerRigidBody;
+    [SerializeField] private BoxCollider2D playerBoxCollider;
+    [SerializeField] private SpriteRenderer playerSpriteRenderer;
     [SerializeField] private ParticalController particleController;
     [SerializeField] private LayerMask jumpableGround;
+    [SerializeField] private HealthManager healthManager;
     private bool doubleJump;
     private float doubleJumpForce = 12f;
 
-
-    private void Awake()
+    private const string JUMP = "jump";
+    private const String SPEED = "speed";
+    private Image[] heart;
+    int heartVal = -1;
+    private void Start()
     {
-        rb2d = gameObject.GetComponent<Rigidbody2D>();
-        sr = gameObject.GetComponent<SpriteRenderer>();
-        bx2d = gameObject.GetComponent<BoxCollider2D>();
+        heartVal = -1;
+        heart =  healthManager.GetImages();
+        for (int i = 0; i < HealthManager.health; i++)
+        {
+            heart[i].sprite = healthManager.GetFullHeart();
+            heartVal++;
+        }
     }
-
+    public Animator GetPlayerAnimator() 
+    { 
+        return playerAnimator;
+    }  
     void Crouch()
     {
         if (Input.GetKeyDown(KeyCode.RightControl))
@@ -37,11 +49,22 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetBool("crouch", false);
         }
     }
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.GetComponent<EnemyController>() != null)
+        {
+            if(heartVal >= 0)
+            {
+                heart[heartVal].sprite = healthManager.GetEmptyHeart();
+                heartVal--;
+            }
+                
+        }
+    }
     void Update()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("jump");
+        float vertical = Input.GetAxisRaw(JUMP);
         MoveCharacter(horizontal, vertical);
         PlayMovementAnimation(horizontal, vertical);
         Crouch();
@@ -54,17 +77,17 @@ public class PlayerController : MonoBehaviour
         position.x = position.x + horizontal * speed * Time.deltaTime;
         transform.position = position;
         //move vertically
-      
-        if (IsGrounded() && !(Input.GetButtonDown("jump")))
+
+        if (IsGrounded() && !(Input.GetButtonDown(JUMP)))
         {
             doubleJump = false;
         }
 
-        if (Input.GetButtonDown("jump"))
+        if (Input.GetButtonDown(JUMP))
         {
             if (IsGrounded() || doubleJump)
             {
-                rb2d.velocity = new Vector2(rb2d.velocity.x, doubleJump ? doubleJumpForce : jump);
+                playerRigidBody.velocity = new Vector2(playerRigidBody.velocity.x, doubleJump ? doubleJumpForce : jump);
                 doubleJump = !doubleJump;
             }
 
@@ -78,29 +101,27 @@ public class PlayerController : MonoBehaviour
         Vector3 scale = transform.localScale;
         if (horizontal < 0)
         {
-            // SoundManager.Instance.Play(Sounds.PlayerMove);
-            playerAnimator.SetFloat("speed", Mathf.Abs(speed));
+            playerAnimator.SetFloat(SPEED, Mathf.Abs(speed));
             scale.x = -1f * Mathf.Abs(scale.x);
         }
         else if (horizontal > 0)
         {
-            //SoundManager.Instance.Play(Sounds.PlayerMove);
-            playerAnimator.SetFloat("speed", Mathf.Abs(speed));
+            playerAnimator.SetFloat(SPEED, Mathf.Abs(speed));
             scale.x = Mathf.Abs(scale.x);
         }
         else
         {
-            playerAnimator.SetFloat("speed", 0);
+            playerAnimator.SetFloat(SPEED, 0);
         }
         transform.localScale = scale;
         //jump
         if (vertical > 0)
         {
-            playerAnimator.SetBool("jump", true);
+            playerAnimator.SetBool(JUMP, true);
         }
         else
         {
-            playerAnimator.SetBool("jump", false);
+            playerAnimator.SetBool(JUMP, false);
         }
     }
 
@@ -108,11 +129,11 @@ public class PlayerController : MonoBehaviour
     {
         scoreController.IncreaseScore(10);
     }
-    
+
     public void OnAnimationDone(String animationName)
     {
         playerAnimator.SetBool("hurt", false);
-        sr.sprite.name = animationName;
+        playerSpriteRenderer.sprite.name = animationName;
     }
     public void GameOverScreen()
     {
@@ -123,7 +144,7 @@ public class PlayerController : MonoBehaviour
     }
     private bool IsGrounded()
     {
-        return Physics2D.BoxCast(bx2d.bounds.center, bx2d.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
+        return Physics2D.BoxCast(playerBoxCollider.bounds.center, playerBoxCollider.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
     }
 
 }

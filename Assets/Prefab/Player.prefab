@@ -281,13 +281,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverController: {fileID: 0}
   scoreController: {fileID: 0}
-  animator: {fileID: 1066435179418836982}
+  playerAnimator: {fileID: 1066435179418836982}
   speed: 4
   jump: 20
+  playerRigidBody: {fileID: 1393239145}
+  playerBoxCollider: {fileID: 1393239144}
+  playerSpriteRenderer: {fileID: 4568395188087828136}
   particleController: {fileID: 0}
   jumpableGround:
     serializedVersion: 2
     m_Bits: 1024
+  healthManager: {fileID: 3148594535847475112}
 --- !u!114 &3148594535847475112
 MonoBehaviour:
   m_ObjectHideFlags: 0

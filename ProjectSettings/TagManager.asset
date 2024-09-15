@@ -3,22 +3,24 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Trap
+  - platform
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Background
   - Water
   - UI
+  - Particle
   - 
   - 
+  - Enemies
+  - Ground
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - chomper
   - 
   - 
   - 
@@ -38,6 +40,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 3902121545
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: enemies
+    uniqueID: 3077524095
     locked: 0
